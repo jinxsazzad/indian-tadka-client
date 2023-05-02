@@ -1,7 +1,17 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import Toest from "../Toest/Toest";
+
 
 const RecipeCard = ({ recipe }) => {
   const { id, name, ingredients, cooking_method, rating } = recipe;
+
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick=()=> {
+    setClicked(true);
+    // Show toast message here using a third-party library like react-toastify
+  }
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure className="px-6 py-6">
@@ -23,10 +33,13 @@ const RecipeCard = ({ recipe }) => {
         </p>
         <p className="text-sm mb-2">Rating:{rating}</p>
         <div className="card-actions">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
-            <Link to={`/chefs-recipes/${id}`}>Add to Favorite</Link>
+          <button onClick={handleClick}
+          disabled={clicked} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+            <Link to={`/chefs-recipes/${id}`}>{clicked? 'Added to Fav':'Add to Favorite'}</Link>
           </button>
+          {clicked && <Toest></Toest>}
         </div>
+        
       </div>
     </div>
   );
