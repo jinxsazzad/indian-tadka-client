@@ -3,7 +3,7 @@ const Toest = () => {
     <div className="toast toast-top toast-end">
       <div className="alert alert-success">
         <div>
-          <span>You added successfully.</span>
+          <span>The recipe is your favorite !</span>
         </div>
       </div>
     </div>

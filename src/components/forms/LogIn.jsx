@@ -5,13 +5,12 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 
 const LogIn = () => {
-  const [show, setShow] = useState(false);
+  const [error, setError] = useState(false);
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
-
   const from = location.state?.from?.pathname || "/";
 
   const handleLogIn = (event) => {
@@ -20,7 +19,6 @@ const LogIn = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
 
     signIn(email, password)
       .then((result) => {
@@ -30,13 +28,20 @@ const LogIn = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log(error);
+        setError(error.message);
       });
   };
   return (
     <div className="container mx-auto px-4">
       <NavigationBar></NavigationBar>
       <div className="max-w-md mx-auto bg-white rounded-md shadow-md p-6">
+        {error ? (
+          <p className=" bg-slate-300 p-2 rounded-md text-red-600 text-center">
+            {error}
+          </p>
+        ) : (
+          <></>
+        )}
         <h2 className="text-2xl font-bold mb-4">Log in</h2>
         <form onSubmit={handleLogIn}>
           <div className="mb-4">
@@ -51,6 +56,7 @@ const LogIn = () => {
               id="email"
               name="email"
               className="border border-gray-400 py-2 px-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
             />
           </div>
           <div className="mb-4">
@@ -65,12 +71,8 @@ const LogIn = () => {
               id="password"
               name="password"
               className="border border-gray-400 py-2 px-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
             />
-            <p onClick={() => setShow(!show)}>
-              <small>
-                {show ? <span>Hide Password</span> : <span>Show Password</span>}
-              </small>
-            </p>
           </div>
           <div className="flex justify-center mb-6">
             <button
@@ -88,7 +90,10 @@ const LogIn = () => {
         </div>
 
         <div className="flex justify-center my-6">
-          <button className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md transition duration-300 flex items-center">
+          <button
+            onClick={signInWithGoogle}
+            className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md transition duration-300 flex items-center"
+          >
             <FaGoogle className="text-white mr-2" />
             Log in with Google
           </button>

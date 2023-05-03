@@ -5,37 +5,38 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const Registration = () => {
   const [error, setError] = useState("");
-  // received createUser func for creating user throw context [AuthContext]
   const { createUser } = useContext(AuthContext);
-  // for collect form data create 'handelRegistration' func
-  const handelRegistration = (event) => {
-    //event.preventDefault for prevent auto reload
-    event.preventDefault();
-    //for receive form
-    const form = event.target;
-    //for receive name which field name is 'name'
-    const name = form.name.value;
-    //for receive photoURL which field name is 'image'
-    const photoURL = form.image.value;
-    //for receive email which field name is 'email'
-    const email = form.email.value;
-    //for receive password which field name is 'password'
-    const password = form.password.value;
 
+  const handelRegistration = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.image.value;
+    const email = form.email.value;
+    const password = form.password.value;
     console.log(name, photoURL, email, password);
+
     setError("");
-    if (password.length < 6) {
-      setError("password must be 6 characters or longer");
+    if (password.length < 8) {
+      setError("Your password must be at least 8 characters");
       return;
     }
-//call createUser for creating new user. remember in behind it works like useEffect [side effect] 
+    if (password.search(/[a-z]/i) < 0) {
+      setError("Your password must contain at least one letter.");
+      return;
+    }
+    if (password.search(/[0-9]/) < 0) {
+      setError("Your password must contain at least one digit.");
+      return;
+    }
+
     createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        form.reset();
       })
       .catch((error) => {
-        console.log(error);
         setError(error.message);
       });
   };
@@ -45,6 +46,9 @@ const Registration = () => {
       <NavigationBar></NavigationBar>
       <div className="max-w-md mx-auto bg-white rounded-md shadow-md p-6">
         <h2 className="text-2xl font-bold mb-4">Register</h2>
+        {
+          error?<p className=" bg-slate-300 p-2 rounded-md text-red-600 text-center">{error}</p>:<></>
+        }
         <form onSubmit={handelRegistration}>
           <div className="mb-4">
             <label
@@ -86,6 +90,7 @@ const Registration = () => {
               id="email"
               name="email"
               className="border border-gray-400 py-2 px-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
             />
           </div>
           <div className="mb-4">
@@ -100,6 +105,7 @@ const Registration = () => {
               id="password"
               name="password"
               className="border border-gray-400 py-2 px-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
             />
           </div>
           <div className="flex justify-center mb-6">
