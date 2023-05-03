@@ -5,18 +5,30 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const Registration = () => {
   const [error, setError] = useState("");
+  // received createUser func for creating user throw context [AuthContext]
   const { createUser } = useContext(AuthContext);
+  // for collect form data create 'handelRegistration' func
   const handelRegistration = (event) => {
+    //event.preventDefault for prevent auto reload
     event.preventDefault();
+    //for receive form
     const form = event.target;
+    //for receive name which field name is 'name'
+    const name = form.name.value;
+    //for receive photoURL which field name is 'image'
+    const photoURL = form.image.value;
+    //for receive email which field name is 'email'
     const email = form.email.value;
+    //for receive password which field name is 'password'
     const password = form.password.value;
+
+    console.log(name, photoURL, email, password);
     setError("");
     if (password.length < 6) {
       setError("password must be 6 characters or longer");
       return;
     }
-
+//call createUser for creating new user. remember in behind it works like useEffect [side effect] 
     createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
@@ -50,6 +62,20 @@ const Registration = () => {
           </div>
           <div className="mb-4">
             <label
+              htmlFor="image"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Image URL
+            </label>
+            <input
+              type="text"
+              id="image"
+              name="image"
+              className="border border-gray-400 py-2 px-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+          <div className="mb-4">
+            <label
               htmlFor="email"
               className="block text-gray-700 font-medium mb-2"
             >
@@ -73,20 +99,6 @@ const Registration = () => {
               type="password"
               id="password"
               name="password"
-              className="border border-gray-400 py-2 px-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="image"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              Image URL
-            </label>
-            <input
-              type="text"
-              id="image"
-              name="image"
               className="border border-gray-400 py-2 px-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
