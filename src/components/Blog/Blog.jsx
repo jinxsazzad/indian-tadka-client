@@ -7,7 +7,7 @@ const Blog = () => {
       <NavigationBar></NavigationBar>
       <div>
         <div className="flex justify-between items-center my-4">
-          <h1 className="text-3xl font-semibold">Some</h1>{" "}
+          <h1 className="text-3xl font-semibold">Some</h1>
           <button className="btn">Download PDF</button>
         </div>
         <div className="pb-8">

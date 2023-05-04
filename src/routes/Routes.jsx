@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../layouts/MainLayout";
-import Registration from "../components/forms/Registration";
-import LogIn from "../components/forms/LogIn";
-import ErrorPage from "../components/ErrorPage/ErrorPage";
-import ChefRecipes from "../components/ChefRecipes/ChefRecipes";
-import PrivateRoute from "./PrivateRoute";
 import Blog from "../components/Blog/Blog";
+import ChefRecipes from "../components/ChefRecipes/ChefRecipes";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
+import LogIn from "../components/forms/LogIn";
+import Registration from "../components/forms/Registration";
+import MainLayout from "../layouts/MainLayout";
+import PrivateRoute from "./PrivateRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -28,7 +28,7 @@ const Routes = createBrowserRouter([
         <ChefRecipes></ChefRecipes>
       </PrivateRoute>
     ),
-    loader: () => fetch(`http://localhost:5000/chef`),
+    loader: () => fetch(`https://indian-tadka-server.vercel.app/chef`),
     errorElement: <ErrorPage></ErrorPage>,
   },
   {
