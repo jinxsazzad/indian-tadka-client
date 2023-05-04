@@ -4,6 +4,7 @@ import { useContext } from "react";
 
 const NavigationBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  
   const handleLogout = () => {
     logOut()
       .then(() => {})
