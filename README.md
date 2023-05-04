@@ -6,3 +6,4 @@ This is chef site based on Indian recipes. It is a single page application.
 - used firebase authentication system
 - login with google system
 - used private route
+# Site link : <a href="https://www.google.com/" target="_blank">Google</a>
