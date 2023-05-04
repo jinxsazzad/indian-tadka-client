@@ -13,7 +13,7 @@ const SpecialDishes = () => {
             <img src="https://fdstatic.foodfood.com/odd/images/Almond-Crusted-Chicken.jpg" />
           </figure>
           <div className="card-body lg:w-2/4">
-            <h1 className=" text-2xl lg:text-8xl font-extrabold">
+            <h1 className=" text-2xl lg:text-8xl font-bold text-red-600">
               01. <hr />
             </h1>
             <h2 className="card-title text-xl lg:text-7xl font-semibold ">
@@ -31,14 +31,15 @@ const SpecialDishes = () => {
         </div>
         <div className="card lg:card-side bg-base-100 flex-col-reverse">
           <div className="card-body lg:w-2/4">
-            <h1 className=" text-2xl lg:text-8xl font-extrabold">
+            <h1 className=" text-2xl lg:text-8xl font-bold text-red-600">
               02. <hr />
             </h1>
             <h2 className="card-title text-xl lg:text-7xl font-semibold ">
-            Chicken and Apple Sandwich!
+              Chicken and Apple Sandwich!
             </h2>
             <p className=" text-base font-medium">
-            The softness of chicken mince and crunch of apple and celery mingle well in these delicious sandwiches.
+              The softness of chicken mince and crunch of apple and celery
+              mingle well in these delicious sandwiches.
             </p>
             <div className="card-actions justify-center">
               <button className="btn btn-primary">Show Full Recipe</button>

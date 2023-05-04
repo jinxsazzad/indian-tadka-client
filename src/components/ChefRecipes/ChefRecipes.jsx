@@ -2,6 +2,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import RecipeCard from "./RecipeCard";
 import { Oval } from "react-loader-spinner";
+import Footer from "../Footer/Footer";
 
 const ChefRecipes = () => {
   const chefID = useParams();
@@ -70,16 +71,15 @@ const ChefRecipes = () => {
           <span className="mx-4 text-gray-500 font-medium">recipes</span>
           <hr className="w-1/3 border-gray-300 border-1" />
         </div>
-        <div className="flex justify-center items-center bg-slate-100 mb-8">
+        <div className="flex justify-center items-center bg-slate-100">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {recipes.map((recipe) => (
-              <RecipeCard key={recipe.id} recipe={recipe}>
-                hello
-              </RecipeCard>
+              <RecipeCard key={recipe.id} recipe={recipe}></RecipeCard>
             ))}
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

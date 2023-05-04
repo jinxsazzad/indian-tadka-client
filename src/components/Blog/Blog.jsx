@@ -1,11 +1,18 @@
 import Footer from "../Footer/Footer";
 import NavigationBar from "../NavigationBar/NavigationBar";
-
+// import React from "react";
+// import ReactPDF from "@react-pdf/renderer";
+// const ref = React.createRef();
 const Blog = () => {
   return (
     <div className="container mx-auto px-4 bg-slate-100">
       <NavigationBar></NavigationBar>
       <div>
+        {/* <div>
+          <ReactPDF targetRef={ref} filename="div-blue.pdf">
+            {({ toPdf }) => <button onClick={toPdf}>Generate pdf</button>}
+          </ReactPDF>
+        </div> */}
         <div className="flex justify-between items-center my-4">
           <h1 className="text-3xl font-semibold">Some</h1>
           <button className="btn">Download PDF</button>
@@ -110,7 +117,8 @@ const Blog = () => {
               React has an internal mechanism for props validation called
               PropTypes. <br />
               <br />
-              Below are the validators for the basic data types: <br /><br />
+              Below are the validators for the basic data types: <br />
+              <br />
               PropTypes.any: The prop can be of any data type <br />
               PropTypes.bool: The prop should be a Boolean <br />
               PropTypes.number: The prop should be a number <br />
@@ -118,7 +126,9 @@ const Blog = () => {
               PropTypes.func: The prop should be a function <br />
               PropTypes.array: The prop should be an array <br />
               PropTypes.object: The prop should be an object <br />
-              PropTypes.symbol: The prop should be a symbol <br /><br /><br />
+              PropTypes.symbol: The prop should be a symbol <br />
+              <br />
+              <br />
               We can also create custom validation by using this.
             </p>
           </div>

@@ -46,9 +46,13 @@ const Registration = () => {
       <NavigationBar></NavigationBar>
       <div className="max-w-md mx-auto bg-white rounded-md shadow-md p-6">
         <h2 className="text-2xl font-bold mb-4">Register</h2>
-        {
-          error?<p className=" bg-slate-300 p-2 rounded-md text-red-600 text-center">{error}</p>:<></>
-        }
+        {error ? (
+          <p className=" bg-slate-300 p-2 rounded-md text-red-600 text-center">
+            {error}
+          </p>
+        ) : (
+          <></>
+        )}
         <form onSubmit={handelRegistration}>
           <div className="mb-4">
             <label

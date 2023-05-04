@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 const NavigationBar = () => {
   const { user, logOut } = useContext(AuthContext);
-  
+
   const handleLogout = () => {
     logOut()
       .then(() => {})
@@ -86,8 +86,12 @@ const NavigationBar = () => {
               <div className="w-10 rounded-full btn-circle avatar">
                 <img
                   className=" rounded-3xl"
-                  src="/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                  alt={user.email}
+                  src={
+                    user.photoURL ||
+                    "https://cdn-icons-png.flaticon.com/512/666/666201.png"
+                  }
+                  alt={user.displayName}
+                  onMouseEnter={user.displayName || "User"}
                 />
               </div>
               <button

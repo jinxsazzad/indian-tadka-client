@@ -9,8 +9,12 @@ const Header = () => {
       </figure>
       <div className="card-body flex justify-center items-center">
         <div className="p-4">
-          <h2 className="card-title text-4xl font-semibold mb-8">Test India Food In Your House!</h2>
-          <p className="text-xl font-base mb-8">Try our famous chefs recipes in you home!</p>
+          <h2 className="card-title text-4xl font-semibold mb-8">
+            Test Indian Food In Your Home!
+          </h2>
+          <p className="text-xl font-base mb-8">
+            Try our famous chefs recipes in you home!
+          </p>
           <div className="card-actions justify-center mb-8">
             <button className="btn btn-primary">Explore More</button>
           </div>
