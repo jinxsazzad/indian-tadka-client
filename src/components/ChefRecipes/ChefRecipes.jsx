@@ -13,6 +13,7 @@ const ChefRecipes = () => {
     name,
     num_recipes,
     picture_url,
+    chef_description,
     recipes,
     years_of_experience,
   } = chefRecipesByChefID;
@@ -41,22 +42,16 @@ const ChefRecipes = () => {
       <NavigationBar></NavigationBar>
       <div className=" bg-slate-100">
         <div className="bg-blue-500 text-white p-8">
-          <div className="flex justify-center items-center mb-4">
+          <div className="flex justify-center items-center mb-4 gap-10">
             <img
               src={picture_url}
               alt={name}
-              className="rounded-full h-32 w-32 mr-2 "
+              className="w-full md:w-64 h-40 md:h-48 transform md:-skew-x-12 rounded-lg ms-6  "
             />
-
-            <div>
-              <h1 className="text-4xl font-bold">{name}</h1>
-              <p className="text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Excepturi itaque autem esse beatae voluptatum obcaecati
-                inventore fugit consequatur voluptatem, dolores id suscipit
-                perferendis atque architecto repudiandae, sapiente ea quae
-                temporibus.
-              </p>
+            <div className=" border-s-2 border-white ps-14 ms-8 ">
+              <h1 className="text-4xl font-bold mb-4">{name}</h1>
+              <hr />
+              <p className="text-lg mt-2">{chef_description}</p>
             </div>
           </div>
           <div className="flex justify-between items-center">
