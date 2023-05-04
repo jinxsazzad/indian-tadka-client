@@ -1,2 +1,8 @@
-# b7a10-chef-recipe-hunter-client-side-jinxsazzad
-b7a10-chef-recipe-hunter-client-side-jinxsazzad created by GitHub Classroom
+# Project Details:
+This is chef site based on Indian recipes. It is a single page application.
+# Some key features of this sites:
+- used react js
+- used react routers
+- used firebase authentication system
+- login with google system
+- used private route
